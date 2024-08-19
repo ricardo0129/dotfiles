@@ -40,6 +40,14 @@ return require('packer').startup(function(use)
 
   -- use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
 
-  use {'folke/tokyonight.nvim', config = function() vim.cmd.colorscheme("tokyonight-storm") end }
+  -- use {'folke/tokyonight.nvim', config = function() vim.cmd.colorscheme("tokyonight-storm") end }
+
+  use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+
+  use {
+      "ThePrimeagen/harpoon",
+       branch = "harpoon2",
+       requires = { {"nvim-lua/plenary.nvim"} }
+  }
 
 end)

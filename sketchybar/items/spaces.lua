@@ -12,14 +12,12 @@ for i = 1, 10, 1 do
     icon = {
       font = {
           style = settings.font.style_map["Bold"],
-          size = 16.0,
       },
       string = greek_letters[i],
       color = colors.white,
-      highlight_color = colors.orange,
+      highlight_color = colors.green,
     },
-    padding_left = 7,
-    padding_right = 7,
+    padding_left = 20, 
 
     -- popup = { background = { border_width = 5, border_color = colors.white} }
   })

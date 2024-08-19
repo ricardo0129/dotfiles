@@ -16,13 +16,12 @@ local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
   local menu = sbar.add("item", "menu." .. i, {
-    padding_left = 20,
+    padding_left = 11,
     drawing = false,
     icon = { drawing = false },
     label = {
       font = {
-        size = 16.0,
-        style = settings.font.style_map["Bold"]
+        style = settings.font.style_map["Bold"],
       },
     },
     click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,

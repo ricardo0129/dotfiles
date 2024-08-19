@@ -1,3 +1,4 @@
+--[[
 print('testing')
 require("tokyonight").setup({
   -- your configuration comes here
@@ -34,3 +35,4 @@ require("tokyonight").setup({
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors) end,
 })
+]]--
