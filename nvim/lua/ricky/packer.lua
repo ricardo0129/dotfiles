@@ -40,14 +40,19 @@ return require('packer').startup(function(use)
 
   -- use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
 
-  use {'folke/tokyonight.nvim', config = function() vim.cmd.colorscheme("tokyonight-storm") end }
+  -- use {'folke/tokyonight.nvim', config = function() vim.cmd.colorscheme("tokyonight-storm") end }
+  
+  -- use 'overcache/NeoSolarized'
 
-  use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+  use 'rebelot/kanagawa.nvim'
+
+
+  use 'nvim-lua/plenary.nvim' -- don't forget to add this one if you don't have it yet!
 
   use {
-      "ThePrimeagen/harpoon",
-       branch = "harpoon2",
-       requires = { {"nvim-lua/plenary.nvim"} }
+      'ThePrimeagen/harpoon',
+       branch = 'harpoon2',
+       requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use 'github/copilot.vim'
