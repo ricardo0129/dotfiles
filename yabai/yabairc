@@ -2,7 +2,7 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 yabai -m config \
-external_bar all:20:20 \
+external_bar all:33:33 \
 menubar_opacity 0.0
 
 yabai -m config top_padding 10
@@ -16,4 +16,6 @@ yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
-borders order=a active_color=0xff9ece6a inactive_color=0xffa9b1d6 width=9 style=square &
+active="0xffbb9af7"
+inactive="0xffa9b1d6"
+borders order=a active_color="$active" inactive_color="$inactive" width=9 style=square &

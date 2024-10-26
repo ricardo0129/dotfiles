@@ -25,10 +25,10 @@ sbar.default({
     padding_right = settings.paddings,
   },
   background = {
-    height = 30,
+    height = 15,
   },
   popup = {
-    blur_radius = 30,
+    blur_radius = 20,
   },
   padding_left = 0,
   padding_right = 0,

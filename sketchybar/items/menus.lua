@@ -50,9 +50,12 @@ end
 sbar.add("bracket", { '/menu\\..*/' }, {
 })
 
+
 local menu_padding = sbar.add("item", "menu.padding", {
   drawing = false,
+  width = 5
 })
+
 
 local function update_menus(env)
   sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
