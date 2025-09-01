@@ -5,7 +5,7 @@ set -e
 TARGET="$HOME/.config"
 
 # List of "packages" (subfolders of ~/dotfiles)
-PACKAGES=(i3 i3status nvim picom tmux)
+PACKAGES=(i3 i3status nvim picom tmux alacritty)
 
 for pkg in "${PACKAGES[@]}"; do
     echo "Stowing $pkg -> $TARGET"
