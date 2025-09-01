@@ -15,4 +15,11 @@ return require('packer').startup(function(use)
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
+  use{
+      'neovim/nvim-lspconfig', 
+      opts = {
+        inlay_hints = { enabled = true },
+      }
+  }
+
 end)
