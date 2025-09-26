@@ -24,9 +24,20 @@ require("lspconfig").clangd.setup {
 }
 
 -- pyright setup
-require("lspconfig").pyright.setup {
-  on_attach = on_attach,
+require('lspconfig').pyright.setup{
+  before_init = function(_, config)
+    local handle = io.popen("pipenv --venv 2>/dev/null")
+    local result = handle:read("*a"):gsub("%s+", "")
+    handle:close()
+    if result ~= "" then
+      config.settings.python = {
+        pythonPath = result .. "/bin/python"
+      }
+    end
+  end,
+  on_attach = on_attach
 }
+
 
 -- Never focus the floating signature window
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
