@@ -8,15 +8,15 @@ vim.diagnostic.config({
 })
 
 
-vim.api.nvim_create_autocmd("TextChangedI", {
-  callback = function()
-    local col = vim.fn.col(".") - 1
-    local char = vim.fn.getline("."):sub(col, col)
-    if char == "(" then
-      vim.lsp.buf.signature_help()
-    end
-  end,
-})
+--vim.api.nvim_create_autocmd("TextChangedI", {
+--  callback = function()
+--    local col = vim.fn.col(".") - 1
+--    local char = vim.fn.getline("."):sub(col, col)
+--    if char == "(" then
+--      vim.lsp.buf.signature_help()
+--    end
+--  end,
+--})
 
 -- clangd setup
 require("lspconfig").clangd.setup {
