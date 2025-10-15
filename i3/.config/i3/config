@@ -202,7 +202,8 @@ bar {
     urgent_workspace   #000000 #DB3279 #FFFFFF
     binding_mode       #000000 #A07CBC #FFFFFF
   }
-  status_command i3status
+  #status_command i3status
+  status_command ~/.config/i3/i3status_wrapper.sh
   tray_output none # Remove ethernet, reminders, etc
 #  status_command exec /home/ricky/.config/i3status/my_script
 }
