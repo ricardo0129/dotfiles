@@ -1,30 +1,27 @@
 require("ricky.lsp.pyright")
 require("ricky.lsp.clangd")
 
+local rt = require("rust-tools")
 
-vim.diagnostic.config({
-  virtual_text = true, -- Ensure this is set to true
-  -- other diagnostic configurations
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
 })
 
 
---vim.api.nvim_create_autocmd("TextChangedI", {
---  callback = function()
---    local col = vim.fn.col(".") - 1
---    local char = vim.fn.getline("."):sub(col, col)
---    if char == "(" then
---      vim.lsp.buf.signature_help()
---    end
---  end,
---})
-
 -- clangd setup
-require("lspconfig").clangd.setup {
-  on_attach = on_attach,
-}
+vim.lsp.config('clangd', {
+    on_attach = on_attach,
+})
 
 -- pyright setup
-require('lspconfig').pyright.setup{
+vim.lsp.config('pyright', {
   before_init = function(_, config)
     local handle = io.popen("pipenv --venv 2>/dev/null")
     local result = handle:read("*a"):gsub("%s+", "")
@@ -36,7 +33,7 @@ require('lspconfig').pyright.setup{
     end
   end,
   on_attach = on_attach
-}
+})
 
 
 -- Never focus the floating signature window
@@ -44,3 +41,51 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
   { focusable = false }
 )
+
+-- LSP Diagnostics Options Setup 
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
+--Set completeopt to have a better completion experience
+-- :help completeopt
+-- menuone: popup even when there's only one match
+-- noinsert: Do not insert text until a selection is made
+-- noselect: Do not select, force to select one from the menu
+-- shortness: avoid showing extra messages when using completion
+-- updatetime: set updatetime for CursorHold
+vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
+vim.opt.shortmess = vim.opt.shortmess + { c = true}
+vim.api.nvim_set_option('updatetime', 300) 
+
+-- Fixed column for diagnostics to appear
+-- Show autodiagnostic popup on cursor hover_range
+-- Goto previous / next diagnostic warning / error 
+-- Show inlay_hints more frequently 
+vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+

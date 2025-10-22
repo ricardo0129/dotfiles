@@ -22,6 +22,8 @@ return require('packer').startup(function(use)
       }
   }
 
+  use { 'simrat39/rust-tools.nvim' }
+
   use { 'catppuccin/nvim', as = 'catppuccin' }
 
   use { 'stevearc/conform.nvim' }
@@ -36,5 +38,16 @@ return require('packer').startup(function(use)
   }
 
   use { 'christoomey/vim-tmux-navigator' }
+
+  use 'wbthomason/packer.nvim'            -- Packer itself
+  use 'neovim/nvim-lspconfig'             -- LSP support
+  use 'hrsh7th/nvim-cmp'                  -- Completion engine
+  use 'hrsh7th/cmp-nvim-lsp'              -- LSP source for nvim-cmp
+  use 'hrsh7th/cmp-buffer'                -- Buffer completions
+  use 'hrsh7th/cmp-path'                  -- Path completions
+  use 'L3MON4D3/LuaSnip'                  -- Snippet engine
+  use 'saadparwaiz1/cmp_luasnip'          -- Snippet completions
+  use 'simrat39/rust-tools.nvim'          -- Rust extras (inlay hints, etc.)
+
 
 end)

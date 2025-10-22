@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 
 
 -- Dir Navigation
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Selecting Macro
 vim.keymap.set("n", "<leader>sa", "gg<S-v>G")
