@@ -20,6 +20,9 @@ vim.opt.updatetime = 50
 
 vim.opt.clipboard:append('unnamedplus')
 
+-- Remove ~ from end of buffer
+vim.opt.fillchars:append({ eob = " " })
+
 -- Completion Plugin Setup
 local cmp = require'cmp'
 cmp.setup({
@@ -55,8 +58,14 @@ cmp.setup({
     { name = 'calc'},                               -- source for math calculation
   },
   window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+    documentation = {
+      border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None', 
+    },
+    completion = {
+      border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None', 
+    }
   },
   formatting = {
       fields = {'menu', 'abbr', 'kind'},
