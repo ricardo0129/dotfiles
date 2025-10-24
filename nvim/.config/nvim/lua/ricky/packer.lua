@@ -37,8 +37,10 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'                  -- Path completions
   use 'L3MON4D3/LuaSnip'                  -- Snippet engine
   use 'saadparwaiz1/cmp_luasnip'          -- Snippet completions
+  use 'hrsh7th/vim-vsnip'
 
   use { 'mrcjkb/rustaceanvim' }
+  use { 'akinsho/toggleterm.nvim', tag = '*' }
 
   -- Theme tokyo night
   use { 'folke/tokyonight.nvim'  }
