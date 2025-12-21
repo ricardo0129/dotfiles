@@ -44,6 +44,10 @@ return require('packer').startup(function(use)
 
   -- Theme tokyo night
   use { 'folke/tokyonight.nvim'  }
-
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
 
 end)

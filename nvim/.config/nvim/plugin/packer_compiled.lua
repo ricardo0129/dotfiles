@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/ricky/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/ricky/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/ricky/.local/share/nvim/site/pack/packer/start/nvim-cmp",
