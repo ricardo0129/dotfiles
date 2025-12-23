@@ -1,5 +1,5 @@
 vim.lsp.config["clangd"] = {
-	cmd = { "clangd" },
+	cmd = { "clangd", "--fallback-style=webkit" },
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 	root_markers = {
 		".clangd",
