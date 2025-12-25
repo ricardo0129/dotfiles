@@ -41,9 +41,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -51,7 +48,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
+bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'Fira Code-13'"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -218,9 +215,10 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Window border colors
-client.focused          #ffffff #ffffff #ffffff #ffffff  #ffffff
-client.focused_inactive #000000 #000000 #000000 #000000  #000000
-client.unfocused        #000000 #000000 #000000 #000000  #000000
+# class                 border   backgr.   text     indicator
+client.focused          #9ece6a  #9ece6a   #000000  #9ece6a
+client.focused_inactive #16161e  #16161e   #000000  #16161e
+client.unfocused        #16161e  #16161e   #000000  #16161e
 
 # compositor
 exec --no-startup-id picom --config ~/.config/picom/picom.conf

@@ -1,5 +1,9 @@
 icons_format = "{icon}"
 
+[theme.overrides]
+# Example: redefine `idle` colors
+idle_fg = "#ffffff"
+
 [[block]]
 block = "custom"
 command = "cat /sys/class/power_supply/macsmc-battery/capacity"
@@ -7,7 +11,7 @@ interval = 1
 
 [[block]]
 block = "net"
-format = " W: ( $signal_strength at $ssid ) $ip"
+format = " $icon ( $signal_strength at $ssid ) $ip"
 
 [[block]]
 block = "disk_space"
@@ -29,16 +33,12 @@ format = " $icon $barchart $utilization "
 
 [[block]]
 block = "memory"
-format = " $mem_avail.eng(w:3,u:B,p:Mi) / $mem_total.eng(w:3,u:B,p:Mi) "
+format = " $icon $mem_avail.eng(w:3,u:B,p:Mi) / $mem_total.eng(w:3,u:B,p:Mi) "
 
 [[block]]
 block = "sound"
 
-[[block.click]]
-button = "left"
-cmd = "pavucontrol"
-
 [[block]]
 block = "time"
 interval = 1
-format = " $timestamp.datetime(f:'%m-%d-%Y %I:%M %p') "
+format = " $icon $timestamp.datetime(f:'%m-%d-%Y %I:%M %p') "
