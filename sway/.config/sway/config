@@ -201,7 +201,7 @@ bar {
   }
   #status_command SCRIPT_DIR=~/.config/i3status/scripts i3blocks
   status_command i3status-rs ~/.config/i3status-rs/config.toml
-  tray_output none # Remove ethernet, reminders, etc
+  tray_output none
 }
 
 # Load background on startup

@@ -17,4 +17,4 @@ import = [
 ]
 
 [terminal.shell]
-program = "/bin/zsh"
+program = "tmux"
