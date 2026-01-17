@@ -47,8 +47,10 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'Fira Code-13'"
+# start bemenu (a program launcher)
+set $menu bemenu-run --no-overlap --prompt "" --fn "monospace 10"
+
+bindsym $mod+d exec $menu
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -204,9 +206,6 @@ bar {
   tray_output none
 }
 
-# Load background on startup
-exec nitrogen --restore
-
 # Inner gaps for all windows: space between two adjacent windows (or split containers).
 gaps inner 7px
 
@@ -220,12 +219,12 @@ client.focused          #9ece6a  #9ece6a   #000000  #9ece6a
 client.focused_inactive #16161e  #16161e   #000000  #16161e
 client.unfocused        #16161e  #16161e   #000000  #16161e
 
-# compositor
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
-
 # Screenshot shortcuts
 bindsym Ctrl+F10 exec --no-startup-id maim | xclip -selection clipboard -timage/png
 bindsym Ctrl+$mod+F10 exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+F10 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-output "eDP-1" scale 1.5
+output "eDP-1" scale 1.5 bg $HOME/Desktop/wallpapers/tokyo_ghoul.png fill
+
+# Set opacity for Alacritty terminal
+for_window [app_id="Alacritty"] opacity 0.95
