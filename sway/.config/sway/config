@@ -227,3 +227,5 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 bindsym Ctrl+F10 exec --no-startup-id maim | xclip -selection clipboard -timage/png
 bindsym Ctrl+$mod+F10 exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+F10 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+output "eDP-1" scale 1.5
