@@ -1,22 +1,6 @@
 -- Remap Leader
 vim.g.mapleader = " "
 
--- Dir Navigation
---vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
--- Selecting Macro
-vim.keymap.set("n", "<leader>sa", "gg<S-v>G")
-vim.keymap.set("n", "<leader>sp", "<S-v>}")
-
--- Competitive Programming Stuff
-vim.keymap.set("n", "<leader>rt", ":0read ~/template.cpp<CR>")
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>bw",
-	":!~/build.sh " .. string.sub(vim.fn.expand("%"), 1, -5) .. "<CR>",
-	{ noremap = true }
-)
-
 -- Disable the default tmux navigator mappings
 vim.g.tmux_navigator_no_mappings = 1
 

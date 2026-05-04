@@ -224,7 +224,7 @@ bindsym Ctrl+F10 exec --no-startup-id maim | xclip -selection clipboard -timage/
 bindsym Ctrl+$mod+F10 exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+F10 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-output "eDP-1" scale 1.5 bg $HOME/Desktop/wallpapers/tokyo_ghoul.png fill
+output "eDP-1" scale 1.5 bg $HOME/Desktop/wallpapers/jjk_1.png fill
 
 # Set opacity for Alacritty terminal
 for_window [app_id="Alacritty"] opacity 0.95
