@@ -10,3 +10,5 @@ vim.opt.signcolumn = "no"
 
 -- Copy to clipboard
 vim.opt.clipboard:append("unnamedplus")
+
+vim.opt.termguicolors = true
