@@ -1,12 +1,7 @@
--- Rust LSP
-vim.lsp.config['rust_ls'] = {
-  -- Command and arguments to start the server.
-  cmd = { 'rust-analyzer' },
-  -- Filetypes to automatically attach to.
-  filetypes = { 'rust' },
-}
-
-vim.lsp.enable('rust_ls')
+vim.lsp.enable({
+    'rust_analyzer',
+    'pyright'
+})
 
 
 -- LSP Diagnostics Options Setup
@@ -31,14 +26,9 @@ vim.diagnostic.config({
 	},
 })
 
---Set completeopt to have a better completion experience
 -- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force to select one from the menu
 -- shortness: avoid showing extra messages when using completion
 -- updatetime: set updatetime for CursorHold
-vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 vim.api.nvim_set_option("updatetime", 300)
 
@@ -50,3 +40,34 @@ vim.cmd([[
     set signcolumn=yes
     autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
+
+
+vim.o.autocomplete = true
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('my.lsp', {}),
+    callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
+    end
+
+    -- Auto-format ("lint") on save.
+    if not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', {clear=false}),
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
+
+-- menuone: popup even when there's only one match
+-- noinsert: Do not insert text until a selection is made
+-- noselect: Do not select, force to select one from the menu
+vim.opt.completeopt = { "menuone", "noselect", "noinsert" }

@@ -15,3 +15,7 @@ map("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
 map("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
 map("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
 map("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
+
+map("n", "<leader>re", "<cmd>restart<cr>", {
+    desc = "Restart Neovim (:restart)",
+})
