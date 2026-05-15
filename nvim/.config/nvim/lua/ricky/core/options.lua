@@ -1,3 +1,5 @@
+-- Lines
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- 4 Space Tab

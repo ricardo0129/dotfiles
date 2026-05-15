@@ -10,5 +10,5 @@ vim.pack.add({
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/neovim/nvim-lspconfig',
     -- Themes
-    'https://github.com/marko-cerovac/material.nvim',
+    'https://github.com/morhetz/gruvbox'
 })
